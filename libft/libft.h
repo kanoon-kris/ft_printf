@@ -6,14 +6,14 @@
 /*   By: kboonkos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/31 16:17:48 by kboonkos          #+#    #+#             */
-/*   Updated: 2026/09/23 23:16:15 by kboonkos         ###   ########.fr       */
+/*   Updated: 2026/09/25 02:09:47 by kboonkos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-#include <stddef.h>
+# include <stddef.h>
 
 typedef struct s_list
 {

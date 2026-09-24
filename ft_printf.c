@@ -6,11 +6,14 @@
 /*   By: kboonkos <kboonkos@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/21 23:12:02 by kboonkos          #+#    #+#             */
-/*   Updated: 2026/09/25 02:04:23 by kboonkos         ###   ########.fr       */
+/*   Updated: 2026/09/25 03:50:13 by kboonkos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdarg.h>
+#include <stddef.h>
+#include <unistd.h>
 
 // Conversions to be handled:
 // cspdiuxX%
@@ -24,46 +27,74 @@
 // %X: hex num in uppercase format
 // %%: a percent sign
 
+int	_ptr_conversion(size_t *byte_count, void *arg)
+{
+	const char	str_null[] = "(nil)";
+
+	if (arg == NULL)
+		*byte_count += write(1, str_null, ft_strlen(str_null));
+	else
+		;// wip
+	return (0);
+}
+
+int	_str_conversion(size_t	*byte_count, const char *arg)
+{
+	const char	str_null[] = "(null)";
+
+	if (arg != NULL)
+		*byte_count += write(1, arg, ft_strlen(arg));
+	else
+		*byte_count += write(1, str_null, ft_strlen(str_null));
+	return (0);
+}
+
+int	_char_conversion(size_t	*byte_count, int arg)
+{
+	unsigned char c;
+
+	c = (unsigned char) arg;
+	*byte_count += write(1, &c, 1);
+	return (0);
+}
+
 int	ft_printf(const char *format, ...)
 {
-	size_t	index;
-	size_t	byte_written;
-	size_t	byte_total;
-	unsigned char	specifier_mode;
 	va_list	args;
-	//unsigned char	*p_char;
-	void	*p_all;
+	size_t	byte_count;
 
-	index = 0;
-	byte_total = 0;
-	specifier_mode = 0;
+	byte_count = 0;
+	if ((format == NULL) || (*format == '\0'))
+		return (byte_count);
 	va_start(args, format);
-	//p_char = malloc(1);
-	while (*(format + index) != '\0')
+	while (ft_isprint(*format) == 1)
 	{
-		if ((*(format + index) == '%') && (specifier_mode == 0))
-			specifier_mode = 1;
-		else if ((specifier_mode == 1) && (*(format + index) == 'c'))
-		{
-//			*p_char = (unsigned char) va_arg(args, unsigned int);
-//			byte_written = write(1, p_char, 1);
-			p_all = malloc(sizeof(char));
-			*p_all = va_arg(args, char);
-			byte_written = write(1, (char *)p_all, 1);
-		}
-		else if ((specifier_mode == 1) && (*(format + index) == 's'))
-		{
-			//wip
-		}
+		if (*format != '%')
+			byte_count += write(1, format, 1);
 		else
 		{
-			byte_written = write(1, (format + index), 1);
-			if (byte_written < 0)
-				return (byte_written);
+			++format;
+			if (*format == 'c')
+				_char_conversion(&byte_count, va_arg(args, int));
+			else if (*format == 's')
+				_str_conversion(&byte_count, va_arg(args, const char *));
+			else if (*format == 'p')
+				_ptr_conversion(&byte_count, va_arg(args, void *));
+			else if (*format == 'd')
+				;
+			else if (*format == 'i')
+				;
+			else if (*format == 'u')
+				;
+			else if (*format == 'x')
+				;
+			else if (*format == 'X')
+				;
+			else if (*format == '%')
+				byte_count += write(1, format, 1);
 		}
-		byte_total += byte_written;
-		++index;
+		++format;
 	}
 	va_end(args);
-	return (byte_total);
+	return (byte_count);
 }
