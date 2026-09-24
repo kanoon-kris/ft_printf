@@ -6,7 +6,7 @@
 /*   By: kboonkos <kboonkos@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/21 23:12:02 by kboonkos          #+#    #+#             */
-/*   Updated: 2026/09/24 05:01:58 by kboonkos         ###   ########.fr       */
+/*   Updated: 2026/09/25 02:04:23 by kboonkos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,6 @@
 // %x: hex num in lowercase format
 // %X: hex num in uppercase format
 // %%: a percent sign
-
-//static size_t	_strlen(const char *s)
-//{
-//	size_t	count;
-//
-//	count = 0;
-//	while (*s++ != '\0')
-//		++count;
-//	return (count);
-//}
 
 int	ft_printf(const char *format, ...)
 {
@@ -76,27 +66,4 @@ int	ft_printf(const char *format, ...)
 	}
 	va_end(args);
 	return (byte_total);
-}
-#include <stdio.h>
-int	main(void)
-{
-	const char	text[] = "IT WORKS HAHAHA\n";
-	ft_printf("ft: "); ft_printf(text);
-	printf("og: "); printf(text);
-// %c: single character
-	const char	letter = 'x';
-	ft_printf("ft: "); ft_printf("%c\n", letter);
-	printf("og: "); printf("%c\n", letter);
-// %s: a string
-//	const char	s[] = "42Bangkok";
-//	ft_printf("ft: "); ft_printf("%s\n", s);
-//	printf("og: "); printf("%s\n", s);
-// %p: (void *) argument to be printed in hex format
-// %d: a decimal base 10
-// %i: an integer in base 10
-// %u: an unsigned decimal in base 10 number
-// %x: hex num in lowercase format
-// %X: hex num in uppercase format
-// %%: a percent sign
-	return (0);
 }
