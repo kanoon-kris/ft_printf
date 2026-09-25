@@ -6,7 +6,7 @@
 #    By: kboonkos <kboonkos@student.42bangkok.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/22 01:18:07 by kboonkos          #+#    #+#              #
-#    Updated: 2026/09/25 02:06:57 by kboonkos         ###   ########.fr        #
+#    Updated: 2026/09/25 09:53:36 by kboonkos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,10 +18,14 @@ LIBFT = $(LIBFT_DIR)/libft.a
 HEADER = ft_printf.h
 LIBFT_HEADER = $(LIBFT_DIR)/libft.h
 
-SRC = ft_printf.c
-#SRC = ft_printf.c \
-#	  ft_printf_utils.c \
-#	  ft_printf_convert.c
+SRC = ft_printf.c \
+		_upper_hex_conversion.c \
+		_lower_hex_conversion.c \
+		_udec_conversion.c \
+		_dec_conversion.c \
+		_ptr_conversion.c \
+		_str_conversion.c \
+		_char_conversion.c
 
 OBJS = ${SRC:.c=.o}
 
