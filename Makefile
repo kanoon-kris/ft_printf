@@ -6,7 +6,7 @@
 #    By: kboonkos <kboonkos@student.42bangkok.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/22 01:18:07 by kboonkos          #+#    #+#              #
-#    Updated: 2026/09/25 09:53:36 by kboonkos         ###   ########.fr        #
+#    Updated: 2026/11/25 21:50:28 by kboonkos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,4 +57,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re $(LIBFT)
+.PHONY: all clean fclean re
