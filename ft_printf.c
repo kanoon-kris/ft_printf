@@ -6,7 +6,7 @@
 /*   By: kboonkos <kboonkos@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/21 23:12:02 by kboonkos          #+#    #+#             */
-/*   Updated: 2026/09/25 09:51:14 by kboonkos         ###   ########.fr       */
+/*   Updated: 2026/11/25 21:50:15 by kboonkos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	ft_printf(const char *format, ...)
 	if ((format == NULL) || (*format == '\0'))
 		return (byte_count);
 	va_start(args, format);
-	while (ft_isprint(*format) == 1)
+	while (*format != '\0')
 	{
 		if (*format != '%')
 			byte_count += write(1, format, 1);
